@@ -43,9 +43,26 @@ public class C04_IFrame {
         Assert.assertTrue(actualSayfaYazisiElementi.isEnabled());
         Thread.sleep(1000);
 
+        WebElement iframeWebElementi= driver.findElement(By.xpath("//iframe[@id='mce_0_ifr']"));
 
+        driver.switchTo().frame(iframeWebElementi);
 
-        WebElement yaziKutuElementi=driver.findElement(By.xpath("//body[@id=‘tinymce’]"));
+        WebElement yaziKutuElementi=driver.findElement(By.xpath("//body[@id='tinymce']"));
+
+         yaziKutuElementi.clear();
         yaziKutuElementi.sendKeys("Merhaba Dunya!");
+        Thread.sleep(1000);
+
+        // - TextBox’in altinda bulunan “Elemental Selenium” linkini textinin gorunur oldugunu dogrulayin ve  konsolda yazdirin.
+        // IFrame'den cik demezsek driver Iframe 'de kalir.
+        // Iframe'den cikmak icin :
+
+        driver.switchTo().parentFrame(); // bir ust html sayfasina gider. ic icer iframe lerde tercih edilir
+        driver.switchTo().defaultContent(); // ana sayfaya gecis yapar
+
+        WebElement elementalSeleniumLinkElementi=driver.findElement(By.xpath("//div[text()=‘Powered by ’]"));
+        Assert.assertTrue(elementalSeleniumLinkElementi.isDisplayed());
+        System.out.println(elementalSeleniumLinkElementi.getText());
+
     }
 }
