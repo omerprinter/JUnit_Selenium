@@ -16,7 +16,6 @@ import java.time.Duration;
 import java.util.List;
 
 public class C01_handleDropdownMenu {
-
     WebDriver driver;
     @Before
     public void setUp() throws InterruptedException {
@@ -72,8 +71,6 @@ public class C01_handleDropdownMenu {
         int actualOptionSayisi = optionsWebElementListesi.size();
         int expectedOptionSayisi=28;
         Assert.assertEquals(expectedOptionSayisi,actualOptionSayisi);
-        Thread.sleep(1000);
+        Thread.sleep(5000);
     }
-
-
 }

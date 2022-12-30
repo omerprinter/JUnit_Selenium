@@ -1,4 +1,4 @@
-package team03Working.segron;
+package team03Workings;
 
 public class comTesting {
     // https://segron.com/contact-us/

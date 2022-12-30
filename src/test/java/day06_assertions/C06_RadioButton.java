@@ -4,7 +4,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
@@ -14,8 +16,8 @@ public class C06_RadioButton {
     // a. Verilen web sayfasına gidin.
     //     https://facebook.com
     // b. Cookies’i kabul edin   //button[@title=‘Only allow essential cookies’]
-    // c. Create an account buton’una basin  //a[@class=‘_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy’]
-    // d. Radio button elementlerini locate edin ve size uygun olani secin
+
+
     WebDriver driver;
     @Before
     public void setUp(){
@@ -29,12 +31,18 @@ public class C06_RadioButton {
         //driver.close();
     }
 @Test
-    public void test01(){
+    public void test01() throws InterruptedException {
     // a. Verilen web sayfasına gidin.
     //     https://facebook.com
     driver.get("https://facebook.com");
     // b. Cookies’i kabul edin   //button[@title=‘Only allow essential cookies’]
+// c. Create an account buton’una basin  //a[@class=‘_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy’]
+   driver.findElement(By.xpath("//a[@class='_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy']")).click();
 
+    // d. Radio button elementlerini locate edin ve size uygun olani secin
+
+    driver.findElement(By.xpath("(//input[@type='radio'])[1]")).click();
+    Thread.sleep(1000);
 
     }
 
