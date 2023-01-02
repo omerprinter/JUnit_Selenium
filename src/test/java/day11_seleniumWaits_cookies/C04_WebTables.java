@@ -36,10 +36,31 @@ public class C04_WebTables extends TestBase {
         }
 
         //6. Web table’daki sutun sayisinin 13 olduğunu test edin
+        List<WebElement> ucuncuSatirinSutunListesi=driver.findElements(By.xpath("//tbody/tr[3]/td"));
+        Assert.assertEquals(13,ucuncuSatirinSutunListesi);
+
         //7. 5.sutunu yazdirin
+        List<WebElement> besinciSutunElementleri=driver.findElements(By.xpath("//tbody/tr/td[5]"));
+        System.out.println("=============================");
+        for (WebElement eachElement:besinciSutunElementleri) {
+            System.out.println(eachElement.getText());
+        }
+        System.out.println("==============================");
         //8.Satir ve sutun sayisini parametre olarak alip, hucredeki bilgiyi döndüren bir method olusturun
+        WebElement istenenDataElementi=getElement(3,5);
+        System.out.println(istenenDataElementi.getText());
 
         ReusableMethods.bekle(5);
+    }
+
+    private WebElement getElement(int satir, int sutun) {
+
+        //   //tbody/tr["+satir+"]/td["+sutun+"]
+
+        String dinamikXpath="//tbody/tr["+satir+"]/td["+sutun+"]";
+
+        WebElement istenenElement= driver.findElement(By.xpath(dinamikXpath));
+        return  istenenElement;
     }
 
 }
