@@ -60,7 +60,7 @@ public class kiwiTest {
 
         // Kalkis ve varis boxlarini temizleyerek kalkis ve varis ulkesini kendimiz belirleyelim
         driver.findElement(By.xpath("(//*[@class='Icon__StyledIcon-sc-1det6wr-0 hRQtyS closeIcon'])[1]")).click();
-        driver.findElement(By.xpath("//*[@data-test='PlacePickerInput-origin']")).sendKeys("Istanbul"+ Keys.ENTER);
+        driver.findElement(By.xpath("//div[@data-test='PlacePickerInput-origin']")).sendKeys("Istanbul"+ Keys.ENTER);
 
         driver.findElement(By.xpath("(//*[@class='Icon__StyledIcon-sc-1det6wr-0 hRQtyS closeIcon'])[2]")).click();
         driver.findElement(By.xpath("(//input[@data-test='SearchField-input'])[2]")).sendKeys("Berlin BER"+ Keys.ENTER);
