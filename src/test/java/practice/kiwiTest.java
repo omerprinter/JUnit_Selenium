@@ -29,7 +29,7 @@ public class kiwiTest {
        // driver.close();
     }
     @Test
-    public void test01(){
+    public void test01() throws InterruptedException {
         // https://www.kiwi.com sayfasina gidin
         driver.get("https://www.kiwi.com");
 
@@ -59,21 +59,30 @@ public class kiwiTest {
         driver.findElement(By.xpath("(//p[@data-test='ModePopup-iconDone'])[2]")).click();
 
         // Kalkis ve varis boxlarini temizleyerek kalkis ve varis ulkesini kendimiz belirleyelim
-        driver.findElement(By.xpath("(//*[@class='Icon__StyledIcon-sc-1det6wr-0 hRQtyS closeIcon'])[1]")).click();
-        driver.findElement(By.xpath("//div[@data-test='PlacePickerInput-origin']")).sendKeys("Istanbul"+ Keys.ENTER);
+        WebElement defaultCloseCity= driver.findElement(By.xpath("//div[@data-test='PlacePickerInputPlace-close']"));
+        defaultCloseCity.click();
 
-        driver.findElement(By.xpath("(//*[@class='Icon__StyledIcon-sc-1det6wr-0 hRQtyS closeIcon'])[2]")).click();
-        driver.findElement(By.xpath("(//input[@data-test='SearchField-input'])[2]")).sendKeys("Berlin BER"+ Keys.ENTER);
+        WebElement kalkisTextBox= driver.findElement(By.xpath("(//input[@data-test='SearchField-input'])[1]"));
+        kalkisTextBox.sendKeys("Istanbul");
+        driver.findElement(By.xpath("//*[text()='İstanbul, Türkiye']")).click();
+
+        WebElement varisNoktasiBox= driver.findElement(By.xpath("(//input[@data-test='SearchField-input'])[2]"));
+        varisNoktasiBox.sendKeys("Varsova");
+
+        driver.findElement(By.xpath("//*[text()='Varşova, Polonya']")).click();
 
         // Gidis tarihi kismina erisim saglayarak gidecegimiz gunu secelim ve booking i iptal edelim
         driver.findElement(By.xpath("//input[@data-test='SearchFieldDateInput']")).click();
-        driver.findElement(By.xpath("//div[@class='CalendarDaystyled__DaySelected-sc-17hkeg7-6 gfNTUi']")).click();
-        driver.findElement(By.xpath("//*[text()='Tarihleri ayarla']")).click();
-        driver.findElement(By.xpath("(//div[@class='ButtonPrimitiveContentChildren__StyledButtonPrimitiveContentChildren-sc-1m4y8u8-0 jiqdNk'])[4]")).click();
+        Thread.sleep(6000);
+        driver.findElement(By.xpath("//div[@data-value='2023-02-10']")).click();
+        driver.findElement(By.xpath("//button[@data-test='SearchFormDoneButton']")).click();
+        driver.findElement(By.xpath("//*[text()='Booking.com ile konaklama arayın']")).click();
+        driver.findElement(By.xpath("//a[@data-test='LandingSearchButton']")).click();
 
 
         // Sadece aktarmasiz ucuslar olarak filtreleme yapalim ve en ucuz secenegine tiklayalim
         driver.findElement(By.xpath("(//span[@class='Radio__LabelText-sc-crlwn1-4 cRmaJX'])[2]")).click();
+        Thread.sleep(2000);
         driver.findElement(By.xpath("(//div[@class='PanelItemstyled__TextUnderlineOffsetFix-sc-152gy0a-0 hLjAZc'])[2]")).click();
 
 
